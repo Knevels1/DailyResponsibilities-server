@@ -1,0 +1,13 @@
+[
+    {
+        "model": "DailyTaskApi.task",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "title": "Take out the trash",
+            "task_date": "2006-10-25",
+            "content": "collect all the trash in the house and take it out.",
+            "complete": false
+        }
+    }
+]
