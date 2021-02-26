@@ -70,14 +70,10 @@ class Tasks(ViewSet):
             user = TaskUser.objects.get(user=request.auth.user)
 
         
-            serializer = TaskSerializer(post, context={'request': request})
+            serializer = TaskSerializer(task, context={'request': request})
             
-            single_post={}
-            single_post['post']=serializer.data
-            if user == task.user:
-                single_post['myPosts']=True 
 
-            return Response(single_post)
+            return Response(serializer.data)
         except Exception as ex:
             return HttpResponseServerError(ex)
 
@@ -87,7 +83,7 @@ class Tasks(ViewSet):
             Response -- Empty body with 204 status code
         """
         task = Task.objects.get(pk=pk)
-        task.approved = request.data['complete']
+        task.complete = request.data['complete']
         task.save()
 
         return Response({}, status=status.HTTP_204_NO_CONTENT)
