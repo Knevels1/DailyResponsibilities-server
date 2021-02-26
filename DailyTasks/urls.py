@@ -17,9 +17,10 @@ from django.conf.urls import include
 from django.urls import path
 from rest_framework import routers
 from DailyTaskApi.views import register_user, login_user
+from DailyTaskApi.views import Tasks
 
 router = routers.DefaultRouter(trailing_slash=False)
-
+router.register(r'tasks', Tasks, 'task')
 
 urlpatterns = [
     path('', include(router.urls)),
